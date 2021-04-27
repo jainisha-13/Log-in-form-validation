@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    
+    <style>
+        .container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 700px;
+            height: 450px;
+            background-color: rgb(188, 208, 214);
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 15px;
+            border: 3px rgb(167, 153, 153) solid;
+            
+        }
+        h1{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: rgb(56, 11, 11);
+            text-align: center;
+            text-decoration: underline;
+        }
+        #right{
+            height: 20px;
+            width: 20px;
+            display:none;
+            background-image: url("greenCheck.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+        }
+        #wrong{
+            height: 20px;
+            width: 20px;
+            display:none;
+            background-image: url("redCross.png");
+            background-repeat: no-repeat;
+            background-size:cover;
+            border-radius: 10px;
+        }
+
+        #result1{
+            color: green;
+            font-size: x-small;
+        }
+        #result2{
+            color: green;
+        }
+
+        #box{
+            height: 200px;
+            width: 100px;
+            margin-top: 50px;
+            float: left;
+        }
+        #frm{
+            height: fit-content;
+            width: fit-content;
+            margin-top: 50px;
+            float: left;
+            margin-left: 210px;
+        }
+        #usrnm{
+            height: 20px;
+            width: 20px;
+            background-color: brown;
+            margin-top: 4px;
+            margin-left: 5px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 15px;
+            display: none;
+        }
+        #pswd{
+            height: 20px;
+            width: 20px;
+            background-color: black;
+            margin-top: 28px;
+            margin-left: 2px;
+            display:none;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 15px;
+        }
+        #bttn{
+            background-color: rgb(60, 236, 75);
+            height: 30px;
+            width: 80px;
+            border-radius: 10px;
+            border: 2px black solid;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Log-in here</h1>
+        <div id="frm">
+            <form name="myfrm" action="https://www.google.com/">
+            
+                Username : <input type="text" name="user" placeholder="email or phone" onkeyup="myValidation()">
+                
+                <br><br>
+                Password : <input type="text" name="passw" placeholder="password" onkeyup="passValidate()"> <p id="result2"></p>
+                <br><br>
+                <input type="submit" value="log-in" id="bttn">
+            </form>
+        </div>
+        <div id="box">
+            <div id="usrnm"></div>
+            <div id="pswd"></div>
+        </div>
+    </div>
+
+    <script>
+        function myValidation(){
+            var x = document.myfrm.user.value;
+            if(isNaN(x)){
+                var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if(x.match(re)){
+                    var temp = document.getElementById("usrnm");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('greenCheck.png')";
+                }
+                else{
+                    var temp = document.getElementById("usrnm");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('redCross.png')";
+                }
+            }
+            else{
+                var re = /^\d{10}$/;
+                if(x.match(re)){
+                    var temp = document.getElementById("usrnm");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('greenCheck.png')";
+                }
+                else{
+                    var temp = document.getElementById("usrnm");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('redCross.png')";
+                }
+            }
+        }
+
+        function passValidate(){
+            var y = document.myfrm.passw.value;
+            var re = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*?]{8,20}$/;
+            if(y.match(re)){
+                var temp = document.getElementById("pswd");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('greenCheck.png')";
+            }
+            else{
+                var temp = document.getElementById("pswd");
+                    temp.style.display="block";
+                    temp.style.backgroundImage="url('redCross.png')";            
+            }
+        }
+    </script>
+</body>
+</html>
